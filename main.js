@@ -32,7 +32,7 @@ sendForm.addEventListener('submit', function(event) {
 
 readButton.addEventListener('click', function() {
   let v= characteristicCache.readValue(); 
-  log(v,'in')
+  log(v.getUint8(0),'in')
 });
 
 
