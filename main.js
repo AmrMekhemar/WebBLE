@@ -31,7 +31,10 @@ function connect() {
     requestBluetoothDevice()).
     then(device => connectDeviceAndCacheCharacteristic(device)).
    // then(characteristic => startNotifications(characteristic)).
-   then(characteristic => characteristic.readValue()).
+   then(characteristic => {
+    let char = characteristic.readValue();
+    log("received value is: "+char)
+   } ).
     catch(error => log(error));
 }
 
@@ -58,11 +61,6 @@ function disconnect() {
   }
     deviceCache = null;
   }
-
-// Send data to the connected device
-function send(data) {
-  //
-}
 
 function requestBluetoothDevice() {
     log('Requesting bluetooth device...');
