@@ -31,8 +31,7 @@ sendForm.addEventListener('submit', function(event) {
 });
 
 readButton.addEventListener('click', function() {
-  let v= characteristicCache.readValue(); 
-  log(v.getUint8(0),'in')
+  let v= characteristicCache.readValue().then(value=>log(v,'in'))
 });
 
 
