@@ -30,13 +30,7 @@ function connect() {
     return (deviceCache ? Promise.resolve(deviceCache) :
     requestBluetoothDevice()).
     then(device => connectDeviceAndCacheCharacteristic(device)).
-   // then(characteristic => startNotifications(characteristic)).
-   then(characteristic => {
-    let char = characteristic.readValue();
-    let value = new TextDecoder().decode(char.target.value);
-    characteristic => startNotifications(characteristic);
-    log("received value is: "+value)
-   } ).
+   then(characteristic => startNotifications(characteristic)).
     catch(error => log(error));
 }
 
