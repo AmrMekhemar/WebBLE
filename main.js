@@ -33,8 +33,9 @@ function connect() {
    // then(characteristic => startNotifications(characteristic)).
    then(characteristic => {
     let char = characteristic.readValue();
+    let value = new TextDecoder().decode(char.target.value);
     characteristic => startNotifications(characteristic);
-    log("received value is: "+char)
+    log("received value is: "+value)
    } ).
     catch(error => log(error));
 }
