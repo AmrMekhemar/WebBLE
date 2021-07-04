@@ -1,9 +1,14 @@
 // Get references to UI elements
 let connectButton = document.getElementById('connect');
 let disconnectButton = document.getElementById('disconnect');
+//Read
+let readButton = document.getElementById('read');
 let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
 let inputField = document.getElementById('input');
+
+let receiveForm = document.getElementById('receive-form');
+let outputField = document.getElementById('output');
 // Selected device object cache
 let deviceCache = null;
 
@@ -17,6 +22,8 @@ disconnectButton.addEventListener('click', function() {
   disconnect();
 });
 
+
+
 // Handle form submit event
 sendForm.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form sending
@@ -25,12 +32,22 @@ sendForm.addEventListener('submit', function(event) {
   inputField.focus();     // Focus on text field
 });
 
+// Handle read form submit event
+sendForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form sending
+  let v = characteristicCache.readValue() // read characteristic val 
+  inputField.value = v;  // Zero text field
+  inputField.focus();     // Focus on text field
+});
+
+
+
 // Launch Bluetooth device chooser and connect to the selected
 function connect() {
     return (deviceCache ? Promise.resolve(deviceCache) :
     requestBluetoothDevice()).
     then(device => connectDeviceAndCacheCharacteristic(device)).
-   then(characteristic => startNotifications(characteristic)).
+   //then(characteristic => startNotifications(characteristic)).
     catch(error => log(error));
 }
 
