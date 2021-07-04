@@ -36,8 +36,7 @@ sendForm.addEventListener('submit', function(event) {
 sendForm.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form sending
   let v = characteristicCache.readValue() // read characteristic val 
-  inputField.value = v;  // Zero text field
-  inputField.focus();     // Focus on text field
+  log(v,'in')  // Zero text field    
 });
 
 
