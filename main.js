@@ -32,6 +32,8 @@ function connect() {
     then(device => connectDeviceAndCacheCharacteristic(device)).
    // then(characteristic => startNotifications(characteristic)).
    then(characteristic => {
+    characteristic.addEventListener('characteristicvaluechanged',
+    handleCharacteristicValueChanged);
     let char = characteristic.readValue();
     log("received value is: "+char)
    } ).
