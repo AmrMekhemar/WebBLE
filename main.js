@@ -72,7 +72,7 @@ function requestBluetoothDevice() {
        acceptAllDevices: true,
         // '1a7e4924-e3ed-4464-8b7e-751e03d0dc5f',0x1800,0x2A04,0x1801,0x16
         //'1a7e4924-e3ed-4464-8b7e-751e03d0dc5f',0x2A04,0x1800,0x2A00,0x2A01,0x1801,0x2A05,0x2902,0x0000,0x0010
-       optionalServices: ["0000180f-0000-1000-8000-00805f9b34fb"] // Required to access service later.
+       optionalServices: ["00001800-0000-1000-8000-00805f9b34fb"] // Required to access service later.
       })
       .
         then(device => {
@@ -99,12 +99,12 @@ function connectDeviceAndCacheCharacteristic(device) {
   return device.gatt.connect().
       then(server => {
         log('GATT server connected, getting service...');
-        return server.getPrimaryService("0000180f-0000-1000-8000-00805f9b34fb");
+        return server.getPrimaryService("00001800-0000-1000-8000-00805f9b34fb");
       }).
       then(service => {
         log('Service found, getting characteristic...');
 
-        return service.getCharacteristic(0x2A00);
+        return service.getCharacteristic("00002a00-0000-1000-8000-00805f9b34fb");
       }).
       then(characteristic => {
         log('Characteristic found');
