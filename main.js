@@ -28,10 +28,10 @@ sendForm.addEventListener('submit', function(event) {
   inputField.focus();     // Focus on text field
 });
 
-readButton.addEventListener('submit', function() {
-  let v= characteristicCache.readValue();
-  let data = new TextDecoder().decode(v); 
-  log(data,'out');
+readButton.addEventListener('click', function() {
+ // let v= characteristicCache.readValue();
+ // let data = new TextDecoder().decode(v); 
+  log("data",'out');
 });
 
 
