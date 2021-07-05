@@ -31,7 +31,7 @@ sendForm.addEventListener('submit', function(event) {
 readButton.addEventListener('submit', function(event) {
   let v= characteristicCache.readValue().then(value =>{ 
       let data = new TextDecoder().decode(value); 
-      log(data, 'out');
+      log(data);
     })
 });
 
