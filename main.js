@@ -29,9 +29,10 @@ sendForm.addEventListener('submit', function(event) {
 });
 
 readButton.addEventListener('click', function() {
-  //let v= characteristicCache.readValue();
-  //let data = new TextDecoder().decode(v);
-  log('data','out');
+  characteristicCache.readValue().then(value=>{
+    let data = new TextDecoder().decode(value);
+    log(data ,'out');
+  })
 });
 
 
