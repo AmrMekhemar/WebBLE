@@ -5,8 +5,6 @@ let readButton = document.getElementById('read');
 let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
 let inputField = document.getElementById('input');
-
-
 // Selected device object cache
 let deviceCache = null;
 
@@ -30,11 +28,13 @@ sendForm.addEventListener('submit', function(event) {
   inputField.focus();     // Focus on text field
 });
 
-readButton.addEventListener('click', function() {
-  let v= characteristicCache.readValue().then( value=> { 
-    let data = String(value)
-    log(data, 'out')
-  });
+readButton.addEventListener('submit', function(event) {
+  let v= characteristicCache.readValue().then(value=>
+    value=> { 
+      let data = String(value);
+      log(data, 'out');
+    })
+});
 
 
 
